@@ -1,0 +1,7 @@
+<h2>Archives for <%= @player.name %></h2>
+
+
+
+<h3>Games won: <%= @wins.count %></h3>
+<h3>Games played: <%= @games.count %></h3>
+<h4>Lifetime percentage: <%= @wins.count.to_f / @games.count.to_f * 100%>%</h4>
