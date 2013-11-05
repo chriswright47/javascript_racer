@@ -112,6 +112,9 @@ namespace :db do
     require APP_ROOT.join('db', 'seeds.rb')
   end
 
+  desc 'fuckit yolo'
+  task :fuckit => [:drop && :create && :migrate]
+
   desc "Returns the current schema version number"
   task :version do
     puts "Current version: #{ActiveRecord::Migrator.current_version}"

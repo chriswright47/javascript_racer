@@ -3,7 +3,7 @@
 <h4>Click on a player to see their history</h4>
 <ul>
 <% @players.each do |player| %>
-<li><a href="/player/<%= player.id %>"><%= player.name %></a></li>
+<li><a href="/player/<%= player.id %>"><%= player.name %></a><br></li>
 <% end %>
 
 </ul>

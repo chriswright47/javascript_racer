@@ -1,32 +1,15 @@
 $(document).ready(function() {
-  function update_player_position(player) {
-    var currentCell = $(player + ' td.active');
-    var nextCell = currentCell.next();
-    currentCell.removeClass('active');
-    nextCell.addClass('active');
-  }
-  function game_end(player) {
-    var playerId = $(player).data('player-id');
-    $('h2').html($(player).data('name') + ' is the winner!');
-    $.post('/game_result', {winner_id: playerId}, function(){
-      alert($(player).data('name') + ' wins!');
-      window.location.href = "/results";
-    });
-  }
+  var player1 = new Player($('#player1_strip').data('name'), $('.p1_start'));
+  var player2 = new Player($('#player2_strip').data('name'), $('.p2_start'));
 
+  var game = new Game(player1, player2, $('.p1_start'), $('.p2_start'));
 
+  $('form').on('submit', function(event) {
+    event.preventDefault;
+    game.start(player1.name, player2.name);
+  });
   $(document).on('keyup', function(event) {
-    if (event.keyCode === 81) {
-      update_player_position('#player1_strip');
-      if ($('.active').hasClass('finish1')) {
-        game_end('#player1_strip');
-      }
-    }
-  if (event.keyCode === 80) {
-      update_player_position('#player2_strip');
-      if ($('.active').hasClass('finish2')) {
-        game_end('#player2_strip');
-      }
-    }
+    game.onKeyUp(event.which);
+    // game.render();
   });
 });

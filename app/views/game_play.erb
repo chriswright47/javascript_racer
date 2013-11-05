@@ -1,7 +1,12 @@
 <h1>Welcome <%= @player_one.name %> and <%= @player_two.name %></h1>
 <table class='racer_table'>
   <tr id='player1_strip' data-player-id='<%= @player_one.id %>' data-name='<%= @player_one.name %>'>
-    <td class='active'></td>
+    <td class='row-title'><%= @player_one.name %></td>
+    <td class='active p1_start'></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
     <td></td>
     <td></td>
     <td></td>
@@ -18,10 +23,15 @@
     <td></td>
     <td></td>
     <td class='finish1'></td>
-  </tr>
+</tr>
 
-  <tr id='player2_strip' data-player-id='<%= @player_two.id %>' data-name='<%= @player_two.name %>'>
-    <td class='active'></td>
+<tr id='player2_strip' data-player-id='<%= @player_two.id %>' data-name='<%= @player_two.name %>'>
+    <td class='row-title'><%= @player_two.name %></td>
+    <td class='active p2_start'></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
     <td></td>
     <td></td>
     <td></td>
@@ -38,7 +48,7 @@
     <td></td>
     <td></td>
     <td class='finish2'></td>
-  </tr>
+</tr>
 </table>
 
 

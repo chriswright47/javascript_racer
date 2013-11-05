@@ -1,3 +1,5 @@
+require 'debugger'
+
 get '/' do
   # Look in app/views/index.erb
   erb :index
@@ -9,6 +11,7 @@ post '/create_game' do
   player_two = Player.find_or_create_by_name(params[:player2])
   game.players << player_one
   game.players << player_two
+  # debugger
   game.save!
   session[:player_one_id] = player_one.id
   session[:player_two_id] = player_two.id
@@ -24,7 +27,7 @@ end
 
 post '/game_result' do
   game = Game.find(session[:game_id])
-  session[:winner_id] = params[:winner_id].to_i
+  session[:winner_id] = Player.find_by_name(params[:winner]).id
   game.update_attributes(winner_id: session[:winner_id])
   if request.xhr?
     @winner = Player.find((session[:winner_id]))
