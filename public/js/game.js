@@ -1,6 +1,6 @@
 function Game(player1, player2, p1_row, p2_row) {
   this.player1 = player1;
-  this.player2 = player2;   
+  this.player2 = player2;
   this.p1_row = p1_row;
   this.p2_row = p2_row;
 }
@@ -37,8 +37,8 @@ Game.prototype.finish = function(player) {
     window.location.href = '/results';
   });
 }
-Game.prototype.render = function(p, p_row) {
-  $(p_row).removeClass('active');
-  $(p_row.nextAll().eq(p.position - 1)).removeClass('active');
-  $(p_row.nextAll().eq(p.position)).addClass('active');
+Game.prototype.render = function(p, first_cell) {
+  $(first_cell).removeClass('active');
+  $(first_cell.nextAll().eq(p.position - 1)).removeClass('active');
+  $(first_cell.nextAll().eq(p.position)).addClass('active');
 }
